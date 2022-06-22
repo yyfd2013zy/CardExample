@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewlistener"
+            type="com.cn.test.listener.MyViewListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical"
+        tools:context=".fragment.Base_Setting">
+        <LinearLayout   android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+            <Button
+                android:id="@+id/id_sendsupercard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="发送超级管理卡"/>
+
+            <Button
+                android:id="@+id/id_sendwg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="发送韦根输出"/>
+
+            <Button
+                android:id="@+id/id_sendcardid_10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="卡号格式切换\n（正向10进制）"/>
+
+            <Button
+                android:id="@+id/id_sendcardid_16"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="卡号格式切换\n（16进制输出）"/>
+
+            <Button
+                android:id="@+id/id_send_10cardid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="卡号格式切换\n（反向10进制）"/>
+
+            <Spinner
+                android:id="@+id/id_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="15dp"
+                android:background="@mipmap/border_bg01"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/id_set_opentime"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="设置开门时间"/>
+            <Button
+                android:id="@+id/id_set_remoteopen"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="远程开门"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout   android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+            <Button
+                android:id="@+id/id_open_relaypower"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="继电器常开"/>
+
+            <Button
+                android:id="@+id/id_close_relaypower"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="继电器常闭"/>
+
+            <Button
+                android:id="@+id/id_open_buzzer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="蜂鸣器打开"/>
+
+            <Button
+                android:id="@+id/id_close_buzzer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="蜂鸣器关闭"/>
+
+            <Button
+                android:id="@+id/id_lift"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="梯控"/>
+            <Button
+                android:id="@+id/id_open_temp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                android:text="温度测试"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+
+        <LinearLayout   android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+        <Button android:id="@+id/id_red_led"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED红灯常亮"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_green_led"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED绿灯常亮"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_blue_led"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED蓝灯常亮"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_marquee_forever"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED跑马灯"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button android:id="@+id/id_red_twinkle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED红灯闪烁"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_green_twinkle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED绿灯闪烁"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_blue_twinkle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED蓝灯闪烁"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+
+            <Button
+                android:id="@+id/id_led_extinguish"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:layout_weight="1"
+                android:background="@mipmap/btn_bg"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:text="LED熄灭"
+                android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

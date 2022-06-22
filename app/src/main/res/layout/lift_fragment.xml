@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:padding="20dp"
+        tools:context=".fragment.LiftFragment">
+
+        <fragment
+            android:id="@+id/id_liftshow"
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="50dp"
+            android:name="com.cn.test.fragment.Lift_Show" />
+
+        <LinearLayout
+            android:id="@+id/id_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/id_liftshow"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:id="@+id/id_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_alignParentRight = "true"
+            android:layout_toRightOf="@+id/id_layout"
+            android:orientation="vertical"/>
+
+        <fragment
+            android:id="@+id/id_liftoperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_layout"
+            android:layout_alignRight="@id/id_layout2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight = "true"
+            android:name="com.cn.test.fragment.Lift_Operation" />
+
+
+
+    </RelativeLayout>
+</layout>

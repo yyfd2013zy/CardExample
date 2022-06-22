@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewlistener"
+            type="com.cn.test.listener.MyViewListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".fragment.Lift_Operation">
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@mipmap/border_bg03">
+
+            <Spinner
+                android:id="@+id/id_liftspinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/id_setopenclose"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:textColor="#000000"
+            android:onClick="@{(view)->viewlistener.btnClick(view)}"
+            android:background="@mipmap/button_hover"
+            android:text="设置开关" />
+
+        <Button
+            android:id="@+id/id_setallopen"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:textColor="#000000"
+            android:onClick="@{(view)->viewlistener.btnClick(view)}"
+            android:background="@mipmap/button_hover"
+            android:text="全开" />
+
+        <Button
+            android:id="@+id/id_setallclose"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:onClick="@{(view)->viewlistener.btnClick(view)}"
+            android:background="@mipmap/button_hover"
+            android:textColor="#000000"
+            android:text="全闭" />
+        <Button
+            android:id="@+id/id_back"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="@{(view)->viewlistener.btnClick(view)}"
+            android:background="@mipmap/button_hover"
+            android:textColor="#000000"
+            android:text="返回" />
+    </LinearLayout>
+</layout>

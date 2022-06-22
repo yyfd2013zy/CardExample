@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".fragment.Base_Setting">
+        <LinearLayout   android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10dp"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:text="信号状态"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10dp"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:text="WG34卡号"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="10dp"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:text="16进制卡号"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="1"
+                  android:orientation="horizontal"
+                  android:padding="10dp" >
+
+            <EditText android:id="@+id/id_status"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:textColor="#ffffff"
+                      android:textSize="20sp"
+                      android:paddingLeft="5dp"
+                      android:background="@mipmap/border_bg02"/>
+
+            <EditText android:id="@+id/id_wg34cardid"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:layout_marginLeft="10dp"
+                      android:paddingLeft="5dp"
+                      android:textColor="#ffffff"
+                      android:textSize="20sp"
+                      android:background="@mipmap/border_bg02"/>
+
+            <EditText android:id="@+id/id_16cardid"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:layout_marginLeft="10dp"
+                      android:paddingLeft="5dp"
+                      android:textColor="#ffffff"
+                      android:textSize="20sp"
+                      android:background="@mipmap/border_bg02"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
