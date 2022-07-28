@@ -9,6 +9,6 @@
     android:singleLine="true"
     android:gravity="center"
     android:textColor="#ffffff"
-    android:textSize="20sp"
+    android:textSize="40sp"
     android:background="#000000"/>
 

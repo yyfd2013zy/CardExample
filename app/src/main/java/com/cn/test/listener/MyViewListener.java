@@ -154,7 +154,7 @@ public class MyViewListener {
                 LogFileUtil.saveLog("获取温度");
                 //mShareViewModel.getmSerialControl().sendHex("EEE10155FFFC");
                 //修改为测温模块8
-                mShareViewModel.getmSerialControl().sendHex("A55801FB");
+                mShareViewModel.getmSerialControl().sendHex("A55501FB");
                 break;
             case R.id.id_continuitygettemperture:
                 if (!mTempFlag) {
@@ -191,7 +191,7 @@ public class MyViewListener {
             while (!Thread.currentThread().interrupted()) {
                 SystemClock.sleep(1000);
                 if (mTempFlag) {
-                    mShareViewModel.getmSerialControl().sendHex("A55801FB");
+                    mShareViewModel.getmSerialControl().sendHex("A55501FB");
                 }
             }
         }

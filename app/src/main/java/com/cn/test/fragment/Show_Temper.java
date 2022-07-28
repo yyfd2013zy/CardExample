@@ -73,27 +73,20 @@ public class Show_Temper extends Fragment {
                     LogFileUtil.saveLog("获取温度信息环温: " + temp2);
                     mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate, temp1, temp2));
                     mViewModel.getmTemperInfoList().setValue(mViewModel.getmTemperInfoList().getValue());
-                } else if (data.startsWith("A556")) {
-                    if (data.length() == 22){
+                } else if (data.startsWith("A555")) {
+                    if (data.length() == 14){
                         String mDate = df.format(new Date()).split(" ")[1];
                         //人体温度
-                        String bodyTempFirst = data.substring(12, 14);
-                        String bodyTempSecond = data.substring(14, 16);
+                        String bodyTempFirst = data.substring(4, 6);
+                        String bodyTempSecond = data.substring(6, 8);
                         int bodyTempInt = Integer.parseInt(bodyTempFirst, 16) + Integer.parseInt(bodyTempSecond, 16) * 256;
                         float bodyTempFloat = (float) bodyTempInt / 100;
                         String bodyTempStr = bodyTempFloat+ "℃";
                         Log.d("TempTest", "人体温度:" + bodyTempFloat);
-                        //环境温度
-                        String hjTempFirst = data.substring(4, 6);
-                        String hjTempSecond = data.substring(6, 8);
-                        int HjTempInt = Integer.parseInt(hjTempFirst, 16) + Integer.parseInt(hjTempSecond, 16) * 256;
-                        float hjTempFloat = (float) HjTempInt / 100;
-                        String hjTempStr = hjTempFloat+ "℃";
-                        Log.d("TempTest", "环境温度:" + hjTempFloat);
                         LogFileUtil.saveLog("获取温度信息时间: " + mDate);
                         LogFileUtil.saveLog("获取温度信息额温: " + bodyTempStr);
-                        LogFileUtil.saveLog("获取温度信息环温: " + hjTempStr);
-                        mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate, bodyTempStr, hjTempStr));
+                        LogFileUtil.saveLog("获取温度信息环温: " + "");
+                        mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate, bodyTempStr, ""));
                         mViewModel.getmTemperInfoList().setValue(mViewModel.getmTemperInfoList().getValue());
                     }
                 }
