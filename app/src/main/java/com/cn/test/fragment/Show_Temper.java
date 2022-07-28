@@ -35,6 +35,7 @@ public class Show_Temper extends Fragment {
     private TemperAdapter mTemperAdapter;
     private static final String TAG = "Show_Temper";
     private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,10 +50,10 @@ public class Show_Temper extends Fragment {
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         mBinding.idList.setLayoutManager(layoutManager);
-        if(mViewModel.getmTemperInfoList().getValue() == null){
+        if (mViewModel.getmTemperInfoList().getValue() == null) {
             mViewModel.getmTemperInfoList().setValue(new ArrayList<TemperInfo>());
         }
         mTemperAdapter = new TemperAdapter(mViewModel.getmTemperInfoList().getValue());
@@ -60,26 +61,49 @@ public class Show_Temper extends Fragment {
         mViewModel.getmReceiveLiveData().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String data) {
-                Toast.makeText(getContext(),data,Toast.LENGTH_SHORT).show();
-                LogFileUtil.saveLog("获取温度信息: "+data.substring(6,10)+"  "+data.substring(10,12)+"  "+data.substring(12,14));
-                int temp = Integer.parseInt(data.substring(10,12),16)*256+Integer.parseInt(data.substring(12,14),16)-27315;
-                if (data.startsWith("58A5")){
+                Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
+                if (data.startsWith("58A5")) {
+                    LogFileUtil.saveLog("获取温度信息: " + data.substring(6, 10) + "  " + data.substring(10, 12) + "  " + data.substring(12, 14));
+                    int temp = Integer.parseInt(data.substring(10, 12), 16) * 256 + Integer.parseInt(data.substring(12, 14), 16) - 27315;
                     String mDate = df.format(new Date()).split(" ")[1];
-                    String temp1 = Float.valueOf(Integer.parseInt(data.substring(6,10),16))/100+"℃";
-                    String temp2 = Float.valueOf(temp)/100+"℃";
-                    LogFileUtil.saveLog("获取温度信息时间: "+mDate);
-                    LogFileUtil.saveLog("获取温度信息额温: "+temp1);
-                    LogFileUtil.saveLog("获取温度信息环温: "+temp2);
-                    mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate,temp1,temp2));
+                    String temp1 = Float.valueOf(Integer.parseInt(data.substring(6, 10), 16)) / 100 + "℃";
+                    String temp2 = Float.valueOf(temp) / 100 + "℃";
+                    LogFileUtil.saveLog("获取温度信息时间: " + mDate);
+                    LogFileUtil.saveLog("获取温度信息额温: " + temp1);
+                    LogFileUtil.saveLog("获取温度信息环温: " + temp2);
+                    mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate, temp1, temp2));
                     mViewModel.getmTemperInfoList().setValue(mViewModel.getmTemperInfoList().getValue());
+                } else if (data.startsWith("A556")) {
+                    if (data.length() == 22){
+                        String mDate = df.format(new Date()).split(" ")[1];
+                        //人体温度
+                        String bodyTempFirst = data.substring(12, 14);
+                        String bodyTempSecond = data.substring(14, 16);
+                        int bodyTempInt = Integer.parseInt(bodyTempFirst, 16) + Integer.parseInt(bodyTempSecond, 16) * 256;
+                        float bodyTempFloat = (float) bodyTempInt / 100;
+                        String bodyTempStr = bodyTempFloat+ "℃";
+                        Log.d("TempTest", "人体温度:" + bodyTempFloat);
+                        //环境温度
+                        String hjTempFirst = data.substring(4, 6);
+                        String hjTempSecond = data.substring(6, 8);
+                        int HjTempInt = Integer.parseInt(hjTempFirst, 16) + Integer.parseInt(hjTempSecond, 16) * 256;
+                        float hjTempFloat = (float) HjTempInt / 100;
+                        String hjTempStr = hjTempFloat+ "℃";
+                        Log.d("TempTest", "环境温度:" + hjTempFloat);
+                        LogFileUtil.saveLog("获取温度信息时间: " + mDate);
+                        LogFileUtil.saveLog("获取温度信息额温: " + bodyTempStr);
+                        LogFileUtil.saveLog("获取温度信息环温: " + hjTempStr);
+                        mViewModel.getmTemperInfoList().getValue().add(new TemperInfo(mDate, bodyTempStr, hjTempStr));
+                        mViewModel.getmTemperInfoList().setValue(mViewModel.getmTemperInfoList().getValue());
+                    }
                 }
             }
         });
-        mViewModel.getmTemperInfoList().observe(this,new Observer<ArrayList<TemperInfo>>() {
+        mViewModel.getmTemperInfoList().observe(this, new Observer<ArrayList<TemperInfo>>() {
             @Override
             public void onChanged(ArrayList<TemperInfo> temperInfos) {
                 mTemperAdapter.notifyDataSetChanged();
-                mBinding.idList.scrollToPosition(mTemperAdapter.getItemCount()-1);
+                mBinding.idList.scrollToPosition(mTemperAdapter.getItemCount() - 1);
             }
         });
     }

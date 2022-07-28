@@ -14,27 +14,28 @@ import com.cn.test.util.LogFileUtil;
 import com.cn.test.viewmodel.ShareViewModel;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class MyViewListener {
     private static final String TAG = "MyViewListener";
     private ShareViewModel mShareViewModel;
+
     public MyViewListener(ShareViewModel shareViewModel) {
         mShareViewModel = shareViewModel;
     }
 
-    public void btnClick(View view){
-        switch (view.getId()){
+    public void btnClick(View view) {
+        switch (view.getId()) {
             case R.id.id_sendsupercard:
                 LogFileUtil.saveLog("发送超级管理卡");
                 mShareViewModel.getmSendLiveData().setValue("AA0704EAFC44D155");
                 break;
             case R.id.id_sendwg:
                 LogFileUtil.saveLog("发送韦根输出");
-                if(!TextUtils.isEmpty(Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue())) && !"null".equalsIgnoreCase(Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue()))){
-                    LogFileUtil.saveLog("发送韦根输出: "+Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue()));
-                    mShareViewModel.getmSendLiveData().setValue("AA0804"+MyFunc.ByteArrToHex(mShareViewModel.getmCardIdLiveData().getValue())+"55");
-                }
-                else{
+                if (!TextUtils.isEmpty(Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue())) && !"null".equalsIgnoreCase(Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue()))) {
+                    LogFileUtil.saveLog("发送韦根输出: " + Arrays.toString(mShareViewModel.getmCardIdLiveData().getValue()));
+                    mShareViewModel.getmSendLiveData().setValue("AA0804" + MyFunc.ByteArrToHex(mShareViewModel.getmCardIdLiveData().getValue()) + "55");
+                } else {
                     mShareViewModel.getmSendLiveData().setValue("AA080455");
                 }
                 break;
@@ -55,11 +56,11 @@ public class MyViewListener {
                 break;
             case R.id.id_set_opentime:
                 LogFileUtil.saveLog("设置开门时间");
-                String timeDataStr = MyFunc.IntToHex(Integer.valueOf(mShareViewModel.getmSeconds().getValue().replace("秒","")));
-                if (timeDataStr.length() == 1){
-                    timeDataStr = "0"+timeDataStr;
+                String timeDataStr = MyFunc.IntToHex(Integer.valueOf(mShareViewModel.getmSeconds().getValue().replace("秒", "")));
+                if (timeDataStr.length() == 1) {
+                    timeDataStr = "0" + timeDataStr;
                 }
-                mShareViewModel.getmSendLiveData().setValue("AA0101"+timeDataStr +"55");
+                mShareViewModel.getmSendLiveData().setValue("AA0101" + timeDataStr + "55");
                 break;
             case R.id.id_set_remoteopen:
                 LogFileUtil.saveLog("远程开门");
@@ -119,17 +120,16 @@ public class MyViewListener {
                 break;
             case R.id.id_setopenclose:
                 StringBuffer mStringBuffer = new StringBuffer();
-                for(Boolean value:mShareViewModel.getmLiftArrayList()){
-                    mStringBuffer.append(value?"1":"0");
+                for (Boolean value : mShareViewModel.getmLiftArrayList()) {
+                    mStringBuffer.append(value ? "1" : "0");
                 }
                 String mStr = "";
-                if(mShareViewModel.getmCheckType().equalsIgnoreCase("自动")){
-                    mStr = "AA" +"B1"+padLeft(Integer.toHexString(Integer.parseInt(mStringBuffer.reverse().toString(), 2)).toUpperCase(),16)+"DD";
+                if (mShareViewModel.getmCheckType().equalsIgnoreCase("自动")) {
+                    mStr = "AA" + "B1" + padLeft(Integer.toHexString(Integer.parseInt(mStringBuffer.reverse().toString(), 2)).toUpperCase(), 16) + "DD";
+                } else {
+                    mStr = "AA" + "B2" + padLeft(Integer.toHexString(Integer.parseInt(mStringBuffer.reverse().toString(), 2)).toUpperCase(), 16) + "DD";
                 }
-                else{
-                    mStr = "AA" +"B2"+padLeft(Integer.toHexString(Integer.parseInt(mStringBuffer.reverse().toString(), 2)).toUpperCase(),16)+"DD";
-                }
-                LogFileUtil.saveLog("设置开关: "+mStr);
+                LogFileUtil.saveLog("设置开关: " + mStr);
                 mShareViewModel.getmSendLiveData().setValue(mStr);
                 break;
             case R.id.id_setallopen:
@@ -152,19 +152,20 @@ public class MyViewListener {
                 break;
             case R.id.id_gettemperture:
                 LogFileUtil.saveLog("获取温度");
-                mShareViewModel.getmSerialControl().sendHex("EEE10155FFFC");
+                //mShareViewModel.getmSerialControl().sendHex("EEE10155FFFC");
+                //修改为测温模块8
+                mShareViewModel.getmSerialControl().sendHex("A55801FB");
                 break;
             case R.id.id_continuitygettemperture:
-                if(!mTempFlag){
+                if (!mTempFlag) {
                     mTempFlag = true;
-                    if(mThread.getState() == Thread.State.NEW){
+                    if (mThread.getState() == Thread.State.NEW) {
                         mThread.start();
                     }
-                    ((Button)view).setText("停止连续获取温度");
+                    ((Button) view).setText("停止连续获取温度");
                     LogFileUtil.saveLog("连续获取温度");
-                }
-                else{
-                    ((Button)view).setText("连续获取温度");
+                } else {
+                    ((Button) view).setText("连续获取温度");
                     LogFileUtil.saveLog("停止连续获取温度");
                     mTempFlag = false;
                 }
@@ -180,26 +181,27 @@ public class MyViewListener {
                 mShareViewModel.getmSwitchFragmentLiveData().setValue("test");
                 break;
         }
-        
+
     }
+
     private boolean mTempFlag = false;
     Thread mThread = new Thread(new Runnable() {
         @Override
         public void run() {
-            while (!Thread.currentThread().interrupted()){
+            while (!Thread.currentThread().interrupted()) {
                 SystemClock.sleep(1000);
-                if(mTempFlag){
-                    mShareViewModel.getmSerialControl().sendHex("EEE10155FFFC");
+                if (mTempFlag) {
+                    mShareViewModel.getmSerialControl().sendHex("A55801FB");
                 }
             }
         }
     });
 
-    private String padLeft(String str,int length) {
+    private String padLeft(String str, int length) {
         if (str.length() >= length) {
             return str;
         } else {
-            return padLeft("0"+str, length);
+            return padLeft("0" + str, length);
         }
     }
 }
