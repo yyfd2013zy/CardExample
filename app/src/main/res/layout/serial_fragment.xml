@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:textColor="#ffffff"
                 android:textSize="25sp"
-                android:text="串口" />
+                android:text="@string/serial" />
 
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_weight="1"
                 android:textColor="#ffffff"
                 android:textSize="25sp"
-                android:text="波特率" />
+                android:text="@string/baud_rate" />
 
         </LinearLayout>
 

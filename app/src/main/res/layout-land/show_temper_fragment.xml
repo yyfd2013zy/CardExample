@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
-                android:text="测量时间"
+                android:text="@string/temp_test_time"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:gravity="center"
-                android:text="测量温度"
+                android:text="@string/temp_test_tem"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
 
@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:gravity="center"
-                android:text="环境温度"
+                android:text="@string/temp_exp_tem"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:visibility="invisible"/>

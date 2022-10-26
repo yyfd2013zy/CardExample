@@ -49,7 +49,7 @@ public class Data_Operation extends Fragment {
      */
     private void initData(){
         for(int i=1;i<256;i++){
-            mDataList.add(i+"秒");
+            mDataList.add(i+"s");
         }
     }
 

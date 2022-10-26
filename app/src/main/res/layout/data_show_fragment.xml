@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="数据接收区"
+                android:text="@string/receive_data"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -53,7 +53,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="数据发送区"
+                android:text="@string/data_transmission"
                 android:textSize="25sp"
                 android:maxLines = "100000"
                 android:scrollbars = "vertical"

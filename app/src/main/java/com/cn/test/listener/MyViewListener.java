@@ -56,7 +56,7 @@ public class MyViewListener {
                 break;
             case R.id.id_set_opentime:
                 LogFileUtil.saveLog("设置开门时间");
-                String timeDataStr = MyFunc.IntToHex(Integer.valueOf(mShareViewModel.getmSeconds().getValue().replace("秒", "")));
+                String timeDataStr = MyFunc.IntToHex(Integer.valueOf(mShareViewModel.getmSeconds().getValue().replace("s", "")));
                 if (timeDataStr.length() == 1) {
                     timeDataStr = "0" + timeDataStr;
                 }
@@ -162,10 +162,10 @@ public class MyViewListener {
                     if (mThread.getState() == Thread.State.NEW) {
                         mThread.start();
                     }
-                    ((Button) view).setText("停止连续获取温度");
+                    ((Button) view).setText(R.string.temp_stop_get_tem_queue);
                     LogFileUtil.saveLog("连续获取温度");
                 } else {
-                    ((Button) view).setText("连续获取温度");
+                    ((Button) view).setText(R.string.temp_get_tem_queue);
                     LogFileUtil.saveLog("停止连续获取温度");
                     mTempFlag = false;
                 }

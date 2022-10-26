@@ -47,7 +47,7 @@ public class Base_Setting extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mShareViewModel = ViewModelProviders.of(getActivity()).get(ShareViewModel.class);
         mShareViewModel = ViewModelProviders.of(getActivity()).get(ShareViewModel.class);
-        mShareViewModel.getmStatusLiveData().observe(this, new Observer<String>() {
+        mShareViewModel.getmStatusLiveData(getContext().getResources().getString(R.string.signal_status)).observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 mBinding.idStatus.setText(s);

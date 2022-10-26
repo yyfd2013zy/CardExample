@@ -33,7 +33,7 @@ public class ShareViewModel extends ViewModel {
 
     public MutableLiveData<String> getmSeconds() {
         if(TextUtils.isEmpty(mSeconds.getValue())){
-            mSeconds.setValue("1秒");
+            mSeconds.setValue("1s");
         }
         return mSeconds;
     }
@@ -46,9 +46,9 @@ public class ShareViewModel extends ViewModel {
         return mReceiveLiveData;
     }
 
-    public MutableLiveData<String> getmStatusLiveData() {
+    public MutableLiveData<String> getmStatusLiveData(String defaultData) {
         if(TextUtils.isEmpty(mStatusLiveData.getValue())){
-            mStatusLiveData.setValue("信号状态");
+            mStatusLiveData.setValue(defaultData);
         }
         return mStatusLiveData;
     }

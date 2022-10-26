@@ -28,7 +28,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="25sp"
                 android:gravity="center_vertical"
-                android:text="信号状态"/>
+                android:text="@string/signal_status"/>
 
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="25sp"
                 android:gravity="center_vertical"
-                android:text="WG34卡号"/>
+                android:text="@string/wg_three_four_num"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="25sp"
                 android:gravity="center_vertical"
-                android:text="16进制卡号"/>
+                android:text="@string/decimal_num_16"/>
         </LinearLayout>
         <LinearLayout android:layout_width="match_parent"
                   android:layout_height="0dp"
