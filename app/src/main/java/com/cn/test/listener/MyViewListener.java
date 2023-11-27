@@ -1,11 +1,13 @@
 package com.cn.test.listener;
 
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cn.test.R;
 import com.cn.test.data.MyFunc;
@@ -15,10 +17,15 @@ import com.cn.test.viewmodel.ShareViewModel;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
+
+import top.defaults.colorpicker.ColorPickerPopup;
 
 public class MyViewListener {
     private static final String TAG = "MyViewListener";
     private ShareViewModel mShareViewModel;
+
+    private String colorHEx = "";
 
     public MyViewListener(ShareViewModel shareViewModel) {
         mShareViewModel = shareViewModel;
@@ -114,6 +121,42 @@ public class MyViewListener {
                 LogFileUtil.saveLog("LED熄灭");
                 mShareViewModel.getmSendLiveData().setValue("AA12000055");
                 break;
+                // 2023-11-27 新增
+            case R.id.id_set_led_light_color:
+                if (TextUtils.isEmpty(colorHEx)){
+                    Toast.makeText(view.getContext(),"Please select a color first",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                LogFileUtil.saveLog("LED自定义颜色常亮:"+colorHEx);
+                mShareViewModel.getmSendLiveData().setValue("AA25"+colorHEx+"55");
+                break;
+            case R.id.id_set_led_blink_color:
+                if (TextUtils.isEmpty(colorHEx)){
+                    Toast.makeText(view.getContext(),"Please select a color first",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                LogFileUtil.saveLog("LED自定义颜色闪烁:"+colorHEx);
+                mShareViewModel.getmSendLiveData().setValue("AA25"+colorHEx+"55");
+                break;
+            case R.id.id_set_led_color:
+                LogFileUtil.saveLog("设置led颜色");
+                new ColorPickerPopup.Builder(view.getContext())
+                        .initialColor(Color.RED) // Set initial color
+                        .enableAlpha(true) // Enable alpha slider or not
+                        .okTitle("Choose")
+                        .cancelTitle("Cancel")
+                        .showIndicator(true)
+                        .showValue(true)
+                        .build()
+                        .show(view, new ColorPickerPopup.ColorPickerObserver() {
+                            @Override
+                            public void onColorPicked(int color) {
+                                String hex= colorHex(color);
+                                colorHEx = hex.substring(4,hex.length());
+                                view.setBackgroundColor(color);
+                            }
+                        });
+                break;
             case R.id.id_lift:
                 LogFileUtil.saveLog("梯控");
                 mShareViewModel.getmSwitchFragmentLiveData().setValue("lift");
@@ -203,5 +246,14 @@ public class MyViewListener {
         } else {
             return padLeft("0" + str, length);
         }
+    }
+
+
+    private String colorHex(int color) {
+        int a = Color.alpha(color);
+        int r = Color.red(color);
+        int g = Color.green(color);
+        int b = Color.blue(color);
+        return String.format(Locale.getDefault(), "0x%02X%02X%02X%02X", a, r, g, b);
     }
 }

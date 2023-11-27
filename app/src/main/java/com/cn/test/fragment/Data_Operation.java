@@ -21,7 +21,8 @@ import java.util.List;
 
 public class Data_Operation extends Fragment {
     private List<String> mDataList = new ArrayList<String>();//数据源
-    private ArrayAdapter<String> mAdapter;//适配器
+    private ArrayAdapter<String> mAdapter;//设置开门时间spinner适配器
+    private ArrayAdapter<String> setLedColorSpinnerAdapter;//设置led颜色spinner适配器
     private DataOperationFragmentBinding mBinding;
     private static final String TAG = "Data_Operation";
     public static Data_Operation newInstance() {
@@ -72,6 +73,8 @@ public class Data_Operation extends Fragment {
 
             }
         });
+
+        setLedColorSpinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.simple_spinner_item,R.id.tv_spinner,mDataList);
 
     }
 }

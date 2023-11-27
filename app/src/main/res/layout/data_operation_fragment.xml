@@ -90,6 +90,7 @@
                     android:text="@string/card_num_format_back_10"/>
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="135dp"
@@ -314,6 +315,68 @@
                     android:textSize="20sp"
                     android:text="@string/led_off"
                     android:onClick="@{(view)->viewlistener.btnClick(view)}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/id_set_led_light_color"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/btn_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                    android:text="LED常亮-自定义颜色"/>
+
+                <Button
+                    android:id="@+id/id_set_led_blink_color"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/btn_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                    android:text="LED闪烁-自定义颜色"/>
+
+                <Button
+                    android:id="@+id/id_set_led_color"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/btn_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                    android:text="LED自定义颜色"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/btn_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:visibility="invisible"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/btn_bg"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:visibility="invisible"/>
             </LinearLayout>
         </LinearLayout>
 
