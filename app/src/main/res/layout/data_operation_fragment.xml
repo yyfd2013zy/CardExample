@@ -369,6 +369,7 @@
                     android:visibility="invisible"/>
 
                 <Button
+                    android:id="@+id/id_nfc_api"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="15dp"
@@ -376,7 +377,9 @@
                     android:background="@mipmap/btn_bg"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:visibility="invisible"/>
+                    android:onClick="@{(view)->viewlistener.btnClick(view)}"
+                    android:text="NFC读卡"
+                    android:visibility="visible"/>
             </LinearLayout>
         </LinearLayout>
 

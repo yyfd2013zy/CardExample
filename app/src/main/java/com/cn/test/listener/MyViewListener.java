@@ -1,5 +1,6 @@
 package com.cn.test.listener;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cn.test.NFCActivity;
 import com.cn.test.R;
 import com.cn.test.data.MyFunc;
 import com.cn.test.serial.SerialControl;
@@ -218,11 +220,17 @@ public class MyViewListener {
                 mShareViewModel.getmTemperInfoList().getValue().clear();
                 mShareViewModel.getmTemperInfoList().setValue(mShareViewModel.getmTemperInfoList().getValue());
                 break;
+            case R.id.id_nfc_api:
+                LogFileUtil.saveLog("NFC读卡");
+                Intent intent = new Intent(view.getContext(), NFCActivity.class);
+                view.getContext().startActivity(intent);
+                break;
             case R.id.id_backhome:
                 LogFileUtil.saveLog("返回");
                 mTempFlag = false;
                 mShareViewModel.getmSwitchFragmentLiveData().setValue("test");
                 break;
+
         }
 
     }
