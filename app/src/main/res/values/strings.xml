@@ -36,4 +36,8 @@
     <string name="temp_clear_data">清空数据</string>
     <string name="temp_back">返回</string>
     <string name="temp_stop_get_tem_queue">停止连续获取温度</string>
+    <string name="string_led_light_color">LED常亮-自定义颜色</string>
+    <string name="string_led_flicker_color">LED闪烁-自定义颜色</string>
+    <string name="string_select_color">LED自定义颜色</string>
+    <string name="string_nf_read_card">NFC读卡</string>
 </resources>

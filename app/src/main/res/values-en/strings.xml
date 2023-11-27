@@ -36,4 +36,8 @@
     <string name="temp_clear_data">Clear Data</string>
     <string name="temp_back">Back</string>
     <string name="temp_stop_get_tem_queue">Stop getting temperature continuously</string>
+    <string name="string_led_light_color">LED always on - custom color</string>
+    <string name="string_led_flicker_color">LED flashing - custom color</string>
+    <string name="string_select_color">LED custom colors</string>
+    <string name="string_nf_read_card">NFC card read</string>
 </resources>
