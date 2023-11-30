@@ -1,8 +1,6 @@
-![](http://www.51kad.com/template/default/index/img/logo.jpg "李健首张专辑《似水流年》封面")
+# CardExample
 
-# KadCardExample
-
-Kad Intelligent Technology Card Reader & LED Strip Sample Demo
+Card Reader & LED Strip Sample Demo
 
 ## Introduction
 
