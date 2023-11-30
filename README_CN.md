@@ -1,8 +1,6 @@
-![](http://www.51kad.com/template/default/index/img/logo.jpg "李健首张专辑《似水流年》封面")
+# CardExample
 
-# KadCardExample
-
-卡得智能科技读卡器&灯带示例demo
+读卡器&灯带示例demo
 
 ## 介绍
 
