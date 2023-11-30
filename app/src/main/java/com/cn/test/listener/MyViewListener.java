@@ -23,6 +23,7 @@ import java.util.Locale;
 
 import top.defaults.colorpicker.ColorPickerPopup;
 
+
 public class MyViewListener {
     private static final String TAG = "MyViewListener";
     private ShareViewModel mShareViewModel;
@@ -130,7 +131,7 @@ public class MyViewListener {
                     return;
                 }
                 LogFileUtil.saveLog("LED自定义颜色常亮:"+colorHEx);
-                mShareViewModel.getmSendLiveData().setValue("AA25"+colorHEx+"55");
+                mShareViewModel.getmSendLiveData().setValue("AA2503"+colorHEx+"55");
                 break;
             case R.id.id_set_led_blink_color:
                 if (TextUtils.isEmpty(colorHEx)){
@@ -138,14 +139,14 @@ public class MyViewListener {
                     return;
                 }
                 LogFileUtil.saveLog("LED自定义颜色闪烁:"+colorHEx);
-                mShareViewModel.getmSendLiveData().setValue("AA25"+colorHEx+"55");
+                mShareViewModel.getmSendLiveData().setValue("AA2603"+colorHEx+"55");
                 break;
             case R.id.id_set_led_color:
                 LogFileUtil.saveLog("设置led颜色");
                 new ColorPickerPopup.Builder(view.getContext())
                         .initialColor(Color.RED) // Set initial color
                         .enableAlpha(true) // Enable alpha slider or not
-                        .okTitle("Choose")
+                        .okTitle("Ok")
                         .cancelTitle("Cancel")
                         .showIndicator(true)
                         .showValue(true)
