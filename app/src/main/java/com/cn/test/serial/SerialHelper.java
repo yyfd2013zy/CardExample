@@ -49,11 +49,12 @@ public abstract class SerialHelper{
     public void open()  {
         LogFileUtil.saveLog("open: "+ sPort+"  "+iBaudRate+"  "+android.os.Build.MODEL);
         try {
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N){
-                mSerialPort =  new SerialPort(new File(sPort), iBaudRate, 0);
-            } else{
-                mSerialPort =  new com.yishengkj.testtools.utils.SerialPort(new File(sPort), iBaudRate, 0);
-            }
+//            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N){
+//                mSerialPort =  new SerialPort(new File(sPort), iBaudRate, 0);
+//            } else{
+//                mSerialPort =  new com.yishengkj.testtools.utils.SerialPort(new File(sPort), iBaudRate, 0);
+//            }
+            mSerialPort =  new com.yishengkj.testtools.utils.SerialPort(new File(sPort), iBaudRate, 0);
             mOutputStream = mSerialPort.getOutputStream();
             mInputStream = mSerialPort.getInputStream();
             mReadThread = new ReadThread();
